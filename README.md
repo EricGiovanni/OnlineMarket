@@ -1,2 +1,2 @@
-# MercadoEnLinea
-Proyecto correspondiente a Ingeniería de Software sobre la creación de Mercado en Linea por parte del equipo "Don Cruz Enterprise"
+# OnlineMarket
+Repository made to develop OnlineMarket which is the school proyect from the subject Software engineering by Don Cruz Enterprise
