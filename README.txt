@@ -34,6 +34,32 @@ mkvirtualenv <nombre-entorno>
 Entramos al proyecto que hemos clonado y hacemos
 "pip install -r requirements.txt"
 
+Ahora tenemos que instalar postgres
+sudo apt install postgresql
+sudo apt install libpq-dev (o su equivalente dependiendo del sistema)
+
+Configuramos la base de datos de postgres
+psql -d postgres
+Una vez dentro, nos aparecerá una pantalla con postgres y hacemos lo siguiente
+\du
+Veremos una lista con los usuarios, nuestro usuario debe tener los permisos de superusuario, crear rol y crear db
+Si no los tiene, haremos
+ALTER ROLE <user> WITH SUPERUSER;
+ALTER ROLE <user> WITH CREATEDB;
+ALTER ROLE <user> WITH CREATEROLE;
+
+Después crearemos la base de datos
+CREATE DATABASE online_market;
+
+Nos movemos a la base de datos con 
+\c online_market
+
+Creamos el usuario para esa base de datos
+CREATE ROLE market_user;
+
+Agregamos contraseña al usuario
+ALTER ROLE market_user WITH PASSWORD '123456'
+
 Podemos iniciar el proyecto con
 "python manage.py runserver"
 
@@ -112,3 +138,4 @@ templates/home/home.html y templates/includes/navbar.html)
 Utilizaremos bootstrap para diseñar la página
 
 Cualquier cosa extra, pueden preguntar y la contestaré lo más rápido que pueda
+
