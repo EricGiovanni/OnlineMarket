@@ -6,6 +6,9 @@
 
 {% include 'includes/navbar.html' %}
 
-<h1>Hola mundo</h1>
+<h1>Hola {{ user }}</h1>
+<ul>
+	<li><a href="{% url 'person_app:logout' %}">Cerrar Sesión</a></li>
+</ul>
 
 {% endblock %}

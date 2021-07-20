@@ -8,6 +8,6 @@ urlpatterns = [
     path(
         '', 
         views.HomeView.as_view(),
-        name='home'
+        name = 'home'
     )
 ]

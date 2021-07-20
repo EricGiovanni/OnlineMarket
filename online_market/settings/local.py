@@ -1,8 +1,5 @@
 from .base import *
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b$it1gk@*=gja-98$z9+3b7tn#nih7(hcw&u_^b95%zxnsiemm'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -14,9 +11,9 @@ ALLOWED_HOSTS = []
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'online_market',
-        'USER': 'market_user',
-        'PASSWORD': '123456',
+        'NAME': get_secret('DB_NAME'),
+        'USER': get_secret('DB_USER'),
+        'PASSWORD': get_secret('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }

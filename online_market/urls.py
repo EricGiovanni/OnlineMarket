@@ -25,4 +25,8 @@ urlpatterns = [
         '',
         include('applications.home.urls')
     ),
+    re_path(
+        '',
+        include('applications.person.urls')
+    ),
 ]

@@ -1,7 +1,22 @@
+from django.core.exceptions import ImproperlyConfigured
+
 from unipath import Path
+import json
+
+with open('secret.json') as f:
+    secret = json.loads(f.read())
+
+def get_secret(name, secrets=secret):
+    try:
+        return secrets[name]
+    except:
+        msg = 'La variable %s no existe' % name
+        raise ImproperlyConfigured(msg)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).ancestor(3)
+
+SECRET_KEY = get_secret('SECRET_KEY')
 
 # Application definition
 
@@ -16,12 +31,16 @@ DJANGO_APPS = [
 ]
 
 ## My Apps
-OWN_APPS = []
+LOCAL_APPS = [
+    'applications.person',
+]
 
 ## Third Party Apps
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'widget_tweaks',
+]
 
-INSTALLED_APPS = DJANGO_APPS + OWN_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,6 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'person.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -89,3 +109,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email Settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = get_secret('EMAIL')
+EMAIL_HOST_PASSWORD = get_secret('EMAIL_PASSWORD')
+EMAIL_PORT = get_secret('PORT')
