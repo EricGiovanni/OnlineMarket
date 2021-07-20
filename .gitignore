@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Quitando secret.json
+secret.json
+
 # C extensions
 *.so
 
