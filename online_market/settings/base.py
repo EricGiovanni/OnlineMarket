@@ -1,22 +1,10 @@
-from django.core.exceptions import ImproperlyConfigured
-
 from unipath import Path
-import json
-
-with open('secret.json') as f:
-    secret = json.loads(f.read())
-
-def get_secret(name, secrets=secret):
-    try:
-        return secrets[name]
-    except:
-        msg = 'La variable %s no existe' % name
-        raise ImproperlyConfigured(msg)
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).ancestor(3)
 
-SECRET_KEY = get_secret('SECRET_KEY')
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Application definition
 
@@ -114,6 +102,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Email Settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = get_secret('EMAIL')
-EMAIL_HOST_PASSWORD = get_secret('EMAIL_PASSWORD')
-EMAIL_PORT = get_secret('PORT')
+EMAIL_HOST_USER = os.environ['EMAIL']
+EMAIL_HOST_PASSWORD = os.environ['PASSWORD']
+EMAIL_PORT = 587
