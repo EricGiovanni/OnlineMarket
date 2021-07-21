@@ -14,12 +14,13 @@ from .forms import ProductForm
 class RegisterView(SellerMixin, FormView):
     template_name = 'product/register.html'
     form_class = ProductForm
-    success_url = reverse_lazy('product_app:product_register')
+    success_url = reverse_lazy('product_app:product_list_seller')
 
     def form_valid(self, form):
         Product.objects.create(
             name=form.cleaned_data['name'],
             description=form.cleaned_data['description'],
+            price=form.cleaned_data['price'],
             owner=self.request.user
         )
         return super(RegisterView, self).form_valid(form)

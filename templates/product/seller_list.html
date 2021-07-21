@@ -8,32 +8,37 @@
 {% include 'includes/navbar_log.html' %}
 
 <div class="container">
-	<!-- Title -->
-	<h1>Lista de empleados por área</h1>
+	<div class="card">
+		<!-- Title -->
+		<h1 class="card-text text-center">Mis productos</h1>
 
-	<!-- Table Employees -->
-	<table class="table table-hover table-responsive">
-		<thead class="table-dark">
-			<tr>
-				<th scope="col">ID</th>
-				<th scope="col">Nombre del Producto</th>
-				<th scope="col">Descripción</th>
-			</tr>
-		</thead>
-		<tbody class="table-light">
-			{% for e in seller_list %}
-			<tr>
-				<td scope="row">{{ e.id }}</td>
-				<td>{{ e.name }}</td>
-				<td>{{ e.description }}</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+		<!-- Table Employees -->
+		<table class="table table-hover table-responsive">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nombre del Producto</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Precio</th>
+				</tr>
+			</thead>
+			<tbody class="table-light">
+				{% for e in seller_list %}
+				<tr>
+					<td scope="row">{{ e.id }}</td>
+					<td>{{ e.name }}</td>
+					<td>{{ e.description }}</td>
+					<td>{{ e.price }}</td>
+					<!--<td><a class="btn btn-light" href="url 'product_app:detail_product_seller' e.id ">Ver</a></td>-->
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-	<!-- Pagination -->
-	{% include 'includes/paginator.html' %}
+		<!-- Pagination -->
+		{% include 'includes/paginator.html' %}
 
+	</div>
 </div>
 
 {% endblock %}

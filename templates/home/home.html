@@ -1,14 +1,43 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
 
+{% if user.user_type == '1' %}
+
 {% include 'includes/navbar_log.html' %}
 
-<h1>Hola {{ user }}</h1>
-<ul>
-	<li><a href="{% url 'person_app:logout' %}">Cerrar Sesión</a></li>
-</ul>
+<div class="container">
+	<div class="card text-center">
+		<div class="card-body">
+			<h3 class="card-title">Bienvenid@ {{ user.name }}</h3>
+			<p class="card-text">En éste sistema podrás registrar tus productos a la venta y verás tu saldo actual.</p>
+			<p class="card-text">Esperamos la experiencia sea de tu agrado.</p>
+			<p class="card-text">Saludos.</p>
+			<img src="{% static 'img/OnlineMarketLogo.png' %}" class="img-fluid" alt="Logo">
+		</div>
+	</div>
+</div>
+
+{% else %}
+
+{% include 'includes/navbar_log_buyer.html' %}
+
+<div class="container">
+	<div class="card text-center">
+		<div class="card-body">
+			<h3 class="card-title">Bienvenid@ {{ user.name }}</h3>
+			<p class="card-text">En éste sistema podrás comprar tus productos preferidos y visualizar los que ya has comprado</p>
+			<p class="card-text">Esperamos la experiencia sea de tu agrado.</p>
+			<p class="card-text">Saludos.</p>
+			<img src="{% static 'img/OnlineMarketLogo.png' %}" class="img-fluid" alt="Logo">
+		</div>
+	</div>
+</div>
+
+{% endif %}
 
 {% endblock %}

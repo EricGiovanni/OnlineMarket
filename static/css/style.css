@@ -18,3 +18,11 @@
 	color: rgba(204, 49, 61, 1);
 }
 
+.card {
+	background-color: rgba(247, 197, 204, 1) !important;
+}
+
+tbody, td, tfoot, th, thead, tr {
+	background-color: rgba(247, 197, 204, 1) !important;
+	color: rgba(204, 49, 61, 1);
+}
