@@ -7,7 +7,7 @@ MIDDLEWARE = MIDDLEWARE + [
 ]
 
 # DEBUG FALSE Y LOGS
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
