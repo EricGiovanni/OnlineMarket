@@ -11,6 +11,7 @@ from django.views.generic import (
 from .forms import PersonForm, LoginForm
 from .models import User
 from .functions import pass_generator
+from .mixins import BuyerMixin, SellerMixin
 
 # Create your views here.
 class RegisterView(FormView):
@@ -27,7 +28,8 @@ class RegisterView(FormView):
             password,
             name = form.cleaned_data['name'],
             last_name = form.cleaned_data['last_name'],
-            phone = form.cleaned_data['phone']
+            phone = form.cleaned_data['phone'], 
+            user_type = form.cleaned_data['user_type'],
         )
         subject = 'Contraseña generada'
         message = 'La contraseña es: ' + password

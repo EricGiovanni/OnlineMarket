@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+{% block title %}Registrar usuario{% endblock %}
+
+{% block content %}
+
+{% include 'includes/navbar_log.html' %}
+
+<div class="container">
+	<div class="card text-center">
+		<div class="card-body">
+			<h5 class="card-title"><img src="{% static 'img/OnlineMarketLogo.png' %}" class="img-fluid" alt="Logo"></h5>
+			<p class="card-text">
+				<form method="POST">{% csrf_token %}
+					<div class="mb-3 row">
+						<label for="username" class="col-md-2 col-sm-4 col-form-label card-text">Nombre del producto</label>
+						<div class="col-md-10 col-sm-8">
+							{{ form.name | add_class:'form-control' }}
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label for="description" class="col-md-2 col-sm-4 col-form-label card-text">Descripción del producto</label>
+						<div class="col-md-10 col-sm-8">
+							{{ form.description | add_class:'form-control' }}
+						</div>
+					</div>
+					<button type="submit" class="btn btn-danger">Registrar producto</button>
+				</form>
+			</p>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

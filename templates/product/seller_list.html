@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Lista de Empleados por área{% endblock %}
+
+{% block content %}
+
+{% include 'includes/navbar_log.html' %}
+
+<div class="container">
+	<!-- Title -->
+	<h1>Lista de empleados por área</h1>
+
+	<!-- Table Employees -->
+	<table class="table table-hover table-responsive">
+		<thead class="table-dark">
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Nombre del Producto</th>
+				<th scope="col">Descripción</th>
+			</tr>
+		</thead>
+		<tbody class="table-light">
+			{% for e in seller_list %}
+			<tr>
+				<td scope="row">{{ e.id }}</td>
+				<td>{{ e.name }}</td>
+				<td>{{ e.description }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<!-- Pagination -->
+	{% include 'includes/paginator.html' %}
+
+</div>
+
+{% endblock %}

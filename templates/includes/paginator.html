@@ -1,0 +1,45 @@
+{% load static %}
+
+{% if is_paginated %}
+<nav aria-label="Page navigation example">
+	<ul class="pagination justify-content-center">
+		{% if not page_obj.has_previous %}
+		<li class="page-item disabled">
+			<a class="page-link" href="#" aria-disabled="true">
+				<i class="bi bi-arrow-left-circle"></i>
+			</a>
+		</li>
+		{% else %}
+		<li class="page-item">
+			<a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+				<i class="bi bi-arrow-left-circle"></i>
+			</a>
+		</li>
+		{% endif %}
+
+		{% for page in paginator.page_range %}
+
+		{% ifequal page page_obj.number %}
+		<li class="page-item active"><div class="page-link">{{ page }}</div></li>
+		{% else %}
+		<li class="page-item"><a class="page-link" href="?page={{ page }}" aria-label="Página {{ page }}">{{ page }}</a></li>
+		{% endifequal %}
+
+		{% endfor %}
+
+		{% if not page_obj.has_next %}
+		<li class="page-item disabled">
+			<a class="page-link" href="#" aria-disabled="true">
+				<i class="bi bi-arrow-right-circle"></i>
+			</a>
+		</li>
+		{% else %}
+		<li class="page-item">
+			<a class="page-link" href="?page={{ page_obj.next_page_number }}">
+				<i class="bi bi-arrow-right-circle"></i>
+			</a>
+		</li>
+		{% endif %}
+	</ul>
+</nav>
+{% endif %}

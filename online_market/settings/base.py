@@ -33,6 +33,7 @@ DJANGO_APPS = [
 ## My Apps
 LOCAL_APPS = [
     'applications.person',
+    'applications.product'
 ]
 
 ## Third Party Apps

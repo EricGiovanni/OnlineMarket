@@ -19,7 +19,8 @@ class PersonForm(forms.ModelForm):
             'name',
             'last_name',
             'email',
-            'phone'
+            'phone',
+            'user_type'
         ]
 
 class LoginForm(forms.Form):
